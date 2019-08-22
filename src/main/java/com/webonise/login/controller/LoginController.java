@@ -22,7 +22,7 @@ public class LoginController {
         return "Welcome to login App";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public boolean login(@RequestBody LoginRequest loginRequest) {
         return userService.login(loginRequest.getLoginId(), loginRequest.getPassword());
     }
