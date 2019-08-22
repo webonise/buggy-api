@@ -31,7 +31,7 @@ For further reference, please consider the following sections:
 
 * user1@gmail.com cant login but user2@gmail.com can
 
-* You can use the `try it out` feature on the swagger page with for the `/login` to simulate this.Alternately you can use any choice of REST client for the same.
+* You can use the `try it out` feature on the swagger page with for the `/login` API to simulate this.Alternately you can use any choice of REST client for the same.
 
 * The output expected out of this is as follows
   * Debug why the login for user1@gmail.com fails.
