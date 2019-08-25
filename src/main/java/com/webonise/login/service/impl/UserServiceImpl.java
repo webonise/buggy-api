@@ -9,9 +9,7 @@ import com.webonise.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,15 +18,12 @@ public class UserServiceImpl implements UserService {
     private UserEntityDao userEntityDao;
 
     @Override
-    public UserDTO saveUser(UserRequest userRequest) {
-    	UserEntity userEntity=null;
-    	Set<UserRequest> set= userRequest.getUserSet();
-    	List<UserRequest> list= new ArrayList<>(set);
-    	for(UserRequest request:list){
-         userEntity = userEntityDao.save(new UserEntity(request));
-        		 }
-        return new UserDTO(userEntity);      
-    }
+	public UserDTO saveUser(UserRequest userRequest) {
+		UserEntity userEntity = null;
+		userEntity = userEntityDao.save(new UserEntity(userRequest));
+
+		return new UserDTO(userEntity);
+	}
 
     @Override
     public boolean login(String loginId, String password) {
