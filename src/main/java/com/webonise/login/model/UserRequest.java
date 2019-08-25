@@ -1,72 +1,89 @@
 package com.webonise.login.model;
 
+import java.util.Set;
+
 public class UserRequest {
 
-    private String firstName;
+	private String firstName;
 
-    private String lastName;
+	private String lastName;
 
-    private String loginId;
+	private String loginId;
 
-    private String password;
+	private String password;
 
-    private String place;
+	private String place;
 
-    public String getFirstName() {
-        return firstName;
-    }
+	private Set<UserRequest> userSet;
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public Set<UserRequest> getUserSet() {
+		return userSet;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public void setUserSet(Set<UserRequest> userSet) {
+		this.userSet = userSet;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public String getLoginId() {
-        return loginId;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public void setLoginId(String loginId) {
-        this.loginId = loginId;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getLoginId() {
+		return loginId;
+	}
 
-    public String getPlace() {
-        return place;
-    }
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
 
-    public void setPlace(String place) {
-        this.place = place;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-        UserRequest userRequest = (UserRequest) o;
+	public String getPlace() {
+		return place;
+	}
 
-        if (firstName != null ? !firstName.equals(userRequest.firstName) : userRequest.firstName != null) return false;
-        return loginId != null ? loginId.equals(userRequest.loginId) : userRequest.loginId == null;
-    }
+	public void setPlace(String place) {
+		this.place = place;
+	}
 
-    @Override
-    public int hashCode() {
-        int result = firstName != null ? firstName.hashCode() : 0;
-        result = 31 * result + (loginId != null ? loginId.hashCode() : 0);
-        return result;
-    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		UserRequest userRequest = (UserRequest) o;
+
+		if (firstName != null ? !firstName.equals(userRequest.firstName)
+				: userRequest.firstName != null)
+			return false;
+		return loginId != null ? loginId.equals(userRequest.loginId)
+				: userRequest.loginId == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = firstName != null ? firstName.hashCode() : 0;
+		result = 31 * result + (loginId != null ? loginId.hashCode() : 0);
+		return result;
+	}
 }
