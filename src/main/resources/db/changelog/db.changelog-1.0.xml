@@ -30,7 +30,7 @@
             <column name="PLACE" type="VARCHAR2(200)">
             </column>
 
-            <column name="CREATED_AT" type="TIMESTAMP(6)">
+            <column name="CREATED_AT" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
 
@@ -43,6 +43,10 @@
             ('User 1', 'A', 'user1@gmail.com', 'user1ABC', 'SomePlace', CURRENT_TIMESTAMP),
             ('User 1', 'A', 'user1@gmail.com', 'user1ABC', 'SomePlace', CURRENT_TIMESTAMP),
                 ('User 2', 'B', 'user2@gmail.com', 'user2ABC', 'SomePlace', CURRENT_TIMESTAMP);</sql>
+    </changeSet>
+    
+    <changeSet author="vikas godse" id="9999999-4">
+        <sql>delete from user where id= 1;</sql>
     </changeSet>
 
 </databaseChangeLog>
