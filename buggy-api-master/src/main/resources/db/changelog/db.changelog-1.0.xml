@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="webonise" id="9999999-1">
+        <createTable tableName="user">
+
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="FIRST_NAME" type="VARCHAR2(200)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="LAST_NAME" type="VARCHAR2(200)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="LOGIN_ID" type="VARCHAR2(200)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="PASSWORD" type="VARCHAR2(200)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="PLACE" type="VARCHAR2(200)">
+            </column>
+
+            <column name="CREATED_AT" type="TIMESTAMP(6)">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet author="webonise" id="9999999-3">
+        <sql>INSERT INTO user (FIRST_NAME, LAST_NAME, LOGIN_ID, PASSWORD, PLACE, CREATED_AT)
+            VALUES
+            ('User 1', 'A', 'user1@gmail.com', 'user1ABC', 'SomePlace', CURRENT_TIMESTAMP),
+            ('User 1', 'A', 'user1@gmail.com', 'user1ABC', 'SomePlace', CURRENT_TIMESTAMP),
+                ('User 2', 'B', 'user2@gmail.com', 'user2ABC', 'SomePlace', CURRENT_TIMESTAMP);</sql>
+    </changeSet>
+
+</databaseChangeLog>
