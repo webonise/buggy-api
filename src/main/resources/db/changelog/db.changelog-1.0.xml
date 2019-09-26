@@ -20,7 +20,7 @@
             </column>
 
             <column name="LOGIN_ID" type="VARCHAR2(200)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
 
             <column name="PASSWORD" type="VARCHAR2(200)">
@@ -40,9 +40,22 @@
     <changeSet author="webonise" id="9999999-3">
         <sql>INSERT INTO user (FIRST_NAME, LAST_NAME, LOGIN_ID, PASSWORD, PLACE, CREATED_AT)
             VALUES
+            ('User 1', 'A', 'user1@gmail.com', 'user1ABC', 'SomePlace', CURRENT_TIMESTAMP),           
             ('User 1', 'A', 'user1@gmail.com', 'user1ABC', 'SomePlace', CURRENT_TIMESTAMP),
-            ('User 1', 'A', 'user1@gmail.com', 'user1ABC', 'SomePlace', CURRENT_TIMESTAMP),
-                ('User 2', 'B', 'user2@gmail.com', 'user2ABC', 'SomePlace', CURRENT_TIMESTAMP);</sql>
+            ('User 2', 'B', 'user2@gmail.com', 'user2ABC', 'SomePlace', CURRENT_TIMESTAMP);</sql>
     </changeSet>
+    
+    
+    <changeSet  author="priyanka" id="9999999-4">
+    <preConditions onFail="MARK_RAN">
+        <columnExists tableName="user" columnName="ID"/>
+        <columnExists tableName="user" columnName="LOGIN_ID"/>
+    </preConditions>
+    <sql>
+        DELETE f1 FROM user f1, user f2
+        WHERE f1.ID > f2.ID
+        AND f1.LOGIN_ID = f2.LOGIN_ID;
+    </sql>
+</changeSet>
 
 </databaseChangeLog>

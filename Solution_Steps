@@ -1,0 +1,11 @@
+-> While logging in with username=user1@gmail.com and password=user1ABC,
+Repository method was returning 2 identical records from database with
+same login parameters.
+
+
+-> The database entries that are being bootstrapped at launching of application
+was sending duplicate entries to database for user1@gmail.com,which was causing issue.
+
+
+-->To make database entries unique,I made changes in >db/changelog/db.changelog-1.0.xml
+file,so the database will have only unique login credentials(LOGIN_ID) for users.  
