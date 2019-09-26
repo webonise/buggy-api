@@ -1,0 +1,28 @@
+Problem statement
+
+    The app when it comes up will have 2 users created in the system -
+        user1@gmail.com with password user1ABC
+        user2@gmail.com with password user2ABC
+
+    user1@gmail.com cant login but user2@gmail.com can
+
+    You can use the try it out feature on the swagger page with for the /login API to simulate this.Alternately you can use any choice of REST client for the same.
+
+    The output expected out of this is as follows
+        Debug why the login for user1@gmail.com fails.
+        Once the bug is discovered fix it and submit the assignment via git
+
+
+*****************************Solution*******************************
+
+solution : Debug why the login for user1@gmail.com fails.
+
+	when user login with above details error comes as
+	"query did not return a unique result: 2; nested exception is javax.persistence.NonUniqueResultException: query did not return a unique result: 2",
+  "path": "/user/login"  .."
+                  
+	this happen because in database there are 2 entries with sme name and same password
+	
+	if we remove duplicate entry form file db.changelog-1.0.xml then user can login successfully.
+
+ 
