@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 import java.sql.Timestamp;
 
 @Entity
@@ -25,7 +27,7 @@ public class UserEntity {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "LOGIN_ID")
+    @Column(name = "LOGIN_ID", unique=true)
     private String loginId;
 
     @Column(name = "PASSWORD")
@@ -49,11 +51,11 @@ public class UserEntity {
         this.place = userRequest.getPlace();
     }
 
-    public Long getId() {
+	public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+	public void setId(Long id) {
         this.id = id;
     }
 

@@ -18,6 +18,11 @@ public class SignUpController {
 
     @PostMapping
     public UserDTO saveUser(@RequestBody UserRequest userRequest) {
-        return userService.saveUser(userRequest);
+    	try {
+    		return userService.saveUser(userRequest);	
+		} catch (Exception e) {
+			// TODO: handle exception
+			throw new NullPointerException();
+		}
     }
 }
