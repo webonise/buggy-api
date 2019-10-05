@@ -24,7 +24,9 @@ public class LoginController {
 
     @PostMapping("/user/login")
     public boolean login(@RequestBody LoginRequest loginRequest) {
-        return userService.login(loginRequest.getLoginId(), loginRequest.getPassword());
+    System.out.println("loginRequestid=="+loginRequest.getLoginId()+"pass="+loginRequest.getPassword());
+        Boolean result=userService.login(loginRequest.getLoginId(), loginRequest.getPassword());
+        return result;
     }
     
 }
