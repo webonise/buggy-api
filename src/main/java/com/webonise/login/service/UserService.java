@@ -11,7 +11,7 @@ public interface UserService {
      * @return UserDTO
      * @param userRequest
      */
-    UserDTO saveUser(UserRequest userRequest);
+	String saveUser(UserRequest userRequest);
 
     /**
      * The Service for user login

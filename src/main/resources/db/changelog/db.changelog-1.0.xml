@@ -41,7 +41,6 @@
         <sql>INSERT INTO user (FIRST_NAME, LAST_NAME, LOGIN_ID, PASSWORD, PLACE, CREATED_AT)
             VALUES
             ('User 1', 'A', 'user1@gmail.com', 'user1ABC', 'SomePlace', CURRENT_TIMESTAMP),
-            ('User 1', 'A', 'user1@gmail.com', 'user1ABC', 'SomePlace', CURRENT_TIMESTAMP),
                 ('User 2', 'B', 'user2@gmail.com', 'user2ABC', 'SomePlace', CURRENT_TIMESTAMP);</sql>
     </changeSet>
 

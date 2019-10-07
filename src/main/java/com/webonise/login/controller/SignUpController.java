@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/user")
-@RequestMapping("/")
+@RestController
+@RequestMapping("/user")
 public class SignUpController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping
-    public UserDTO saveUser(@RequestBody UserRequest userRequest) {
+    @RequestMapping("/createUser")
+    public String saveUser(@RequestBody UserRequest userRequest) {
+    	System.out.println("user data:username="+userRequest.getLoginId()+"#tpassword="+userRequest.getPassword());
         return userService.saveUser(userRequest);
     }
 }

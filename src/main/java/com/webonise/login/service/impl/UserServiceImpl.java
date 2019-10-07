@@ -17,22 +17,26 @@ public class UserServiceImpl implements UserService {
     private UserEntityDao userEntityDao;
 
     @Override
-    public UserDTO saveUser(UserRequest userRequest) {
-        UserEntity userEntity = userEntityDao.save(new UserEntity(userRequest));
-        return new UserDTO(userEntity);
+    public String saveUser(UserRequest userRequest) {
+    	System.out.println("userRequest user="+userRequest.getLoginId()+"password="+userRequest.getPassword());
+    	UserEntity userEntity=userEntityDao.findByLoginIdAndPassword(userRequest.getLoginId(), userRequest.getPassword());
+    	System.out.println("existing record="+userEntity);
+    	if(userEntity==null) {
+    		userEntity = userEntityDao.save(new UserEntity(userRequest));
+    		return "User created successfully";
+    	}
+    	else {
+    		return "Cannot create duplicate user";
+    	}
+       // UserEntity userEntity = userEntityDao.save(new UserEntity(userRequest));
+        
+    	
     }
 
     @Override
     public boolean login(String loginId, String password) {
     	System.out.println("loginId="+loginId+" password="+password);
-        List<UserEntity> user = userEntityDao.findByLoginIdAndPassword(loginId, password);
-        System.out.println("size of user obj="+user.size());
-        if(user.size()>0) {
-        	  return user != null;
-       }
-        else {
-        	return user==null;
-        }
-      
+        UserEntity user = userEntityDao.findByLoginIdAndPassword(loginId, password);
+       return user!=null;
     }
 }
