@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.3.RELEASE</version>
+		<version>2.1.9.RELEASE</version>
 		<relativePath/>
 	</parent>
 	<groupId>com.webonise</groupId>
@@ -74,7 +74,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.12</version>
+            <version>8.0.18</version>
         </dependency>
 
         <dependency>
