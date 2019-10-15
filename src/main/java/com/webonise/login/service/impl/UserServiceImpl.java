@@ -18,8 +18,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO saveUser(UserRequest userRequest) {
-        UserEntity userEntity = userEntityDao.save(new UserEntity(userRequest));
-        return new UserDTO(userEntity);
+        // UserEntity userEntity = userEntityDao.save(new UserEntity(userRequest));
+        UserEntity userEntity = userEntityDao.findByLoginId(userRequest.getLoginId());
+        if (userEntity != null){
+            // System.out.println(userEntity.getFirstName());
+            return null;
+        }
+        else{
+            userEntity = userEntityDao.save(new UserEntity(userRequest));
+            // System.out.println(userEntity)
+            return new UserDTO(userEntity);
+        }
     }
 
     @Override

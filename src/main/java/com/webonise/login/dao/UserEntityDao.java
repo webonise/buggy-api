@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface UserEntityDao extends JpaRepository<UserEntity, Long> {
 
+    UserEntity findByLoginId(String loginId);
     UserEntity findByLoginIdAndPassword(String loginId, String password);
 }

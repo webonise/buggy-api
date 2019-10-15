@@ -17,7 +17,15 @@ public class SignUpController {
     private UserService userService;
 
     @PostMapping
-    public UserDTO saveUser(@RequestBody UserRequest userRequest) {
-        return userService.saveUser(userRequest);
+    public Object saveUser(@RequestBody UserRequest userRequest) {
+        System.out.println("-----------****************----------------");
+        System.out.println(userRequest.getLoginId());
+        Object chk = userService.saveUser(userRequest);
+        if(chk == null){
+            return "LoginId Exists";
+        }
+        else{
+            return chk;
+        }
     }
 }
