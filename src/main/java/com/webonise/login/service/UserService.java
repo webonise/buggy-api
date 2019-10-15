@@ -1,6 +1,5 @@
 package com.webonise.login.service;
 
-import com.webonise.login.model.UserDTO;
 import com.webonise.login.model.UserRequest;
 
 public interface UserService {
@@ -11,7 +10,7 @@ public interface UserService {
      * @return UserDTO
      * @param userRequest
      */
-    UserDTO saveUser(UserRequest userRequest);
+    String saveUser(UserRequest userRequest) throws RuntimeException;
 
     /**
      * The Service for user login

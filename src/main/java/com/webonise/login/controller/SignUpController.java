@@ -1,6 +1,5 @@
 package com.webonise.login.controller;
 
-import com.webonise.login.model.UserDTO;
 import com.webonise.login.model.UserRequest;
 import com.webonise.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ public class SignUpController {
     private UserService userService;
 
     @PostMapping
-    public UserDTO saveUser(@RequestBody UserRequest userRequest) {
+    public String saveUser(@RequestBody UserRequest userRequest) {
         return userService.saveUser(userRequest);
     }
 }
