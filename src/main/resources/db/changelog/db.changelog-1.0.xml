@@ -44,5 +44,8 @@
             ('User 1', 'A', 'user1@gmail.com', 'user1ABC', 'SomePlace', CURRENT_TIMESTAMP),
                 ('User 2', 'B', 'user2@gmail.com', 'user2ABC', 'SomePlace', CURRENT_TIMESTAMP);</sql>
     </changeSet>
-
+    <changeSet id="9999999-4" author="webonise">
+    <validCheckSum>7:f633116af46161f629175b1e74a67b57</validCheckSum>
+    <!-- … // content of the changeset (with the update) -->
+    </changeSet>
 </databaseChangeLog>
