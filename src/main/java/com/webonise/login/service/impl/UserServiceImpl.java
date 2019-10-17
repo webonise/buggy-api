@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -17,9 +19,18 @@ public class UserServiceImpl implements UserService {
     private UserEntityDao userEntityDao;
 
     @Override
-    public UserDTO saveUser(UserRequest userRequest) {
-        UserEntity userEntity = userEntityDao.save(new UserEntity(userRequest));
+    public UserDTO saveUser(UserRequest userRequest) throws RuntimeException {
+    	UserEntity userEntity = null;
+    	
+    	if(null != userEntityDao.findByLoginId(userRequest.getLoginId()))
+    	{
+    		throw new RuntimeException( "LoginId Exists ! Please Try different loginId !");
+    	}
+    	else {
+    		userEntity = userEntityDao.save(new UserEntity(userRequest));
+    	}
         return new UserDTO(userEntity);
+        
     }
 
     @Override

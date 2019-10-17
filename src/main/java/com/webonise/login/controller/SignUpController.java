@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/user")
+@RestController
 @RequestMapping("/")
 public class SignUpController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping
+    @PostMapping("/")
     public UserDTO saveUser(@RequestBody UserRequest userRequest) {
         return userService.saveUser(userRequest);
     }
