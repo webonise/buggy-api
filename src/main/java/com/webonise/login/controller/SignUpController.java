@@ -16,7 +16,7 @@ public class SignUpController {
     @Autowired
     private UserService userService;
 
-    @PostMapping
+    @PostMapping("/")
     public UserDTO saveUser(@RequestBody UserRequest userRequest) {
         return userService.saveUser(userRequest);
     }

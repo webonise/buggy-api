@@ -18,8 +18,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO saveUser(UserRequest userRequest) {
-        UserEntity userEntity = userEntityDao.save(new UserEntity(userRequest));
-        return new UserDTO(userEntity);
+        //UserEntity userEntity = userEntityDao.save(new UserEntity(userRequest));
+        //return new UserDTO(userEntity);
+    	
+    	UserEntity user = null;
+    	
+    	try {
+    		user = userEntityDao.findByLoginId(userRequest.getLoginId());
+    	}catch(Exception e){
+    		System.out.println(e);
+    	}
+    	
+    	if(user != null){
+    		throw new RuntimeException("This LoginId has already Used");
+    	}
+    	else {
+    		return new UserDTO(userEntityDao.save(new UserEntity(userRequest)));
+    	}
+        
     }
 
     @Override
@@ -29,7 +45,7 @@ public class UserServiceImpl implements UserService {
 		
 		
 		/*
-		 The user whoose not able to login has two entries in user table, we were just acepting only single entry while fetching the user and it was giving more than one entry, This scenario can be 
+		 The user who is not able to login has two entries in user table, we were just acepting only single entry while fetching the user and it was giving more than one entry, This scenario can be 
 handle by limiting in JpaRepository or writing our on query to fetch user and senond way is accept the data in list format (if list size is more than one then user is exit in database
 with given credential).
 		 */
