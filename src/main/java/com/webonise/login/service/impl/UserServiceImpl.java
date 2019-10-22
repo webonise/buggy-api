@@ -24,7 +24,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean login(String loginId, String password) {
-        UserEntity user = userEntityDao.findByLoginIdAndPassword(loginId, password);
-        return user != null;
+		List<UserEntity> user = userEntityDao.findByLoginIdAndPassword(loginId, password);
+		return user != null && user.size() > 0;
+		
+		
+		/*
+		 The user whoose not able to login has two entries in user table, we were just acepting only single entry while fetching the user and it was giving more than one entry, This scenario can be 
+handle by limiting in JpaRepository or writing our on query to fetch user and senond way is accept the data in list format (if list size is more than one then user is exit in database
+with given credential).
+		 */
     }
 }
