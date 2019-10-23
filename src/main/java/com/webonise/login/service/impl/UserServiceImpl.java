@@ -20,16 +20,8 @@ public class UserServiceImpl implements UserService {
     public UserDTO saveUser(UserRequest userRequest) {
         //UserEntity userEntity = userEntityDao.save(new UserEntity(userRequest));
         //return new UserDTO(userEntity);
-    	
-    	UserEntity user = null;
-    	
-    	try {
-    		user = userEntityDao.findByLoginId(userRequest.getLoginId());
-    	}catch(Exception e){
-    		System.out.println(e);
-    	}
-    	
-    	if(user != null){
+    	    	
+    	if(userEntityDao.findByLoginId(userRequest.getLoginId()).size() > 0){
     		throw new RuntimeException("This LoginId has already Used");
     	}
     	else {
