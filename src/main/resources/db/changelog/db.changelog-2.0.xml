@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+<!--    todo we have to run the migration script and need to make login ids unique
+-  currently I changed it manually in other liquibase changelog
+ -->
+
+    <changeSet author="webonise" id="9999999-4">
+        <sql>alter table user add  constraint unique (LOGIN_ID);</sql>
+    </changeSet>
+
+</databaseChangeLog>
