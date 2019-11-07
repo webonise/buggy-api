@@ -1,5 +1,6 @@
 package com.webonise.login.service;
 
+import com.webonise.login.exception.NoUniqueUserFoundException;
 import com.webonise.login.model.UserDTO;
 import com.webonise.login.model.UserRequest;
 
@@ -19,6 +20,7 @@ public interface UserService {
      * @param loginId
      * @param password
      * @return boolean
+     * @throws NoUniqueUserFoundException 
      */
-    boolean login(String loginId, String password);
+    boolean login(String loginId, String password) throws NoUniqueUserFoundException;
 }

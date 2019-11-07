@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.webonise.login.exception.NoUniqueUserFoundException;
 import com.webonise.login.model.LoginRequest;
 import com.webonise.login.service.UserService;
 
@@ -23,7 +24,7 @@ public class LoginController {
     }
 
     @PostMapping("/user/login")
-    public boolean login(@RequestBody LoginRequest loginRequest) {
+    public boolean login(@RequestBody LoginRequest loginRequest) throws NoUniqueUserFoundException {
         return userService.login(loginRequest.getLoginId(), loginRequest.getPassword());
     }
     
