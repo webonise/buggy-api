@@ -1,6 +1,6 @@
 package com.webonise.login.model;
 
-import org.hibernate.annotations.CreationTimestamp;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "USER")
@@ -25,7 +26,7 @@ public class UserEntity {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "LOGIN_ID")
+    @Column(name = "LOGIN_ID", unique=true)
     private String loginId;
 
     @Column(name = "PASSWORD")

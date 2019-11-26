@@ -1,0 +1,15 @@
+1] USER 1 was not able login with username = user1@gmail.com & password = user1ABC, 
+   Controller was returning two identical records from database. 
+
+2] Databases entries inserting through INSERT Query at application StartUp was sending two duplicate records, 
+   which was causing issue. 
+   
+3] Changes I have made :
+	
+	a] Added Custom Exception Handler Class 
+	
+	b] To make database entry unique changed insert query in db.changelog-1.0.xml file.
+	
+	c] Added unique constraint to login_id field, so no duplication at the time of sign up.
+	
+	d] Added check while inserting user data in database whether Data is already present or not .

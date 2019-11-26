@@ -17,9 +17,17 @@ public class UserServiceImpl implements UserService {
     private UserEntityDao userEntityDao;
 
     @Override
-    public UserDTO saveUser(UserRequest userRequest) {
-        UserEntity userEntity = userEntityDao.save(new UserEntity(userRequest));
-        return new UserDTO(userEntity);
+    public String saveUser(UserRequest userRequest) throws RuntimeException {
+
+        UserEntity userEntityExist = userEntityDao.findByLoginId(userRequest.getLoginId());
+        
+        if(userEntityExist != null) {
+        	throw new RuntimeException();
+        }
+        
+        userEntityDao.save(new UserEntity(userRequest));
+
+        return "User Data Inserted Successfully!";
     }
 
     @Override

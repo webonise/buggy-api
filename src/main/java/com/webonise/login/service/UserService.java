@@ -11,7 +11,7 @@ public interface UserService {
      * @return UserDTO
      * @param userRequest
      */
-    UserDTO saveUser(UserRequest userRequest);
+    String saveUser(UserRequest userRequest) throws RuntimeException;
 
     /**
      * The Service for user login
