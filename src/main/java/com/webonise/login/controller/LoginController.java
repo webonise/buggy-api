@@ -8,23 +8,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webonise.login.model.LoginRequest;
+import com.webonise.login.responseHandler.ApiBaseController;
+import com.webonise.login.responseHandler.ApiResponse;
 import com.webonise.login.service.UserService;
 
 @RestController
 @RequestMapping("/")
-public class LoginController {
+public class LoginController extends ApiBaseController {
 
-    @Autowired
-    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-    @GetMapping
-    public String login() {
-        return "Welcome to login App";
-    }
+	@GetMapping
+	public String login() {
+		return "Welcome to login App";
+	}
 
-    @PostMapping("/user/login")
-    public boolean login(@RequestBody LoginRequest loginRequest) {
-        return userService.login(loginRequest.getLoginId(), loginRequest.getPassword());
-    }
-    
+	@PostMapping("/user/login")
+	public ApiResponse login(@RequestBody LoginRequest loginRequest) {
+		try {
+			Boolean loginStatus = userService.login(loginRequest.getLoginId(), loginRequest.getPassword());
+			return response("success", loginStatus);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return response("error", e.getMessage());
+		}
+	}
+
 }

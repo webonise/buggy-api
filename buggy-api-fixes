@@ -1,0 +1,10 @@
+Problem - 
+	1. We had 2 records in user table with same login_id (user1@gmail.com) and password (user1ABC). That is the reason why we were getting multiple records from database which was creating problem during login.
+
+Fixes done to resolve the problem - 
+	1. Removed duplicate record in 'db.changelog-1.0.xml'.
+	2. Added unique constraint in login_id column of user table so that database should not allow duplicacy in login_id.
+	3. In /saveUser API, a new validation check has been added before inserting data in user table. It firstly checks whether any record is present in user table with same login_id or not. If any record is found with same login_id then we throw a exception with message - 'Login Id is already registered'.
+	4. In /user/login, a new validation has been added that if no user is found for the given login_id and password then we throw an exception with error message - 'Bad login credentials'.
+	5. A new package folder has been added to give more informative response whether request is successfully executed or some error has occurred. That been handled in these 2 APIs /user/login and /saveUser.
+	 

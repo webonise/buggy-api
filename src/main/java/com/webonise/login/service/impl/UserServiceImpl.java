@@ -1,30 +1,45 @@
 package com.webonise.login.service.impl;
 
-import com.webonise.login.dao.UserEntityDao;
-import com.webonise.login.model.UserDTO;
-import com.webonise.login.model.UserRequest;
-import com.webonise.login.model.UserEntity;
-import com.webonise.login.service.UserService;
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.webonise.login.dao.UserEntityDao;
+import com.webonise.login.model.UserDTO;
+import com.webonise.login.model.UserEntity;
+import com.webonise.login.model.UserRequest;
+import com.webonise.login.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserEntityDao userEntityDao;
+	@Autowired
+	private UserEntityDao userEntityDao;
 
-    @Override
-    public UserDTO saveUser(UserRequest userRequest) {
-        UserEntity userEntity = userEntityDao.save(new UserEntity(userRequest));
-        return new UserDTO(userEntity);
-    }
+	@Override
+	public UserDTO saveUser(UserRequest userRequest) throws Exception {
 
-    @Override
-    public boolean login(String loginId, String password) {
-        UserEntity user = userEntityDao.findByLoginIdAndPassword(loginId, password);
-        return user != null;
-    }
+		UserEntity userEntity = userEntityDao.findByLoginId(userRequest.getLoginId());
+
+		if (Objects.nonNull(userEntity)) {
+			throw new Exception("Login Id '" + userRequest.getLoginId() + "' is already registered.");
+		} else {
+			System.out.println("User loginId = " + userRequest.getLoginId());
+			userEntity = userEntityDao.save(new UserEntity(userRequest));
+		}
+
+		UserDTO userDTO = new UserDTO(userEntity);
+
+		return userDTO;
+	}
+
+	@Override
+	public boolean login(String loginId, String password) throws Exception {
+		UserEntity user = userEntityDao.findByLoginIdAndPassword(loginId, password);
+		if (Objects.isNull(user)) {
+			throw new Exception("Bad login credentials");
+		}
+		return user != null;
+	}
 }
