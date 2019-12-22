@@ -1,14 +1,15 @@
 package com.webonise.login.service.impl;
 
-import com.webonise.login.dao.UserEntityDao;
-import com.webonise.login.model.UserDTO;
-import com.webonise.login.model.UserRequest;
-import com.webonise.login.model.UserEntity;
-import com.webonise.login.service.UserService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.webonise.login.dao.UserEntityDao;
+import com.webonise.login.model.UserDTO;
+import com.webonise.login.model.UserEntity;
+import com.webonise.login.model.UserRequest;
+import com.webonise.login.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -27,4 +28,12 @@ public class UserServiceImpl implements UserService {
         UserEntity user = userEntityDao.findByLoginIdAndPassword(loginId, password);
         return user != null;
     }
+    
+    @Override
+	public int checkUser(String loginId) {
+		
+		List<UserEntity> data = userEntityDao.findByLoginId(loginId);
+		
+		return data.size();
+	}
 }

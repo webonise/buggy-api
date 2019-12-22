@@ -21,4 +21,6 @@ public interface UserService {
      * @return boolean
      */
     boolean login(String loginId, String password);
+    
+    int checkUser(String loginId);
 }
