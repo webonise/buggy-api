@@ -20,7 +20,7 @@
             </column>
 
             <column name="LOGIN_ID" type="VARCHAR2(200)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" unique="true" uniqueConstraintName="loginid"/>
             </column>
 
             <column name="PASSWORD" type="VARCHAR2(200)">
